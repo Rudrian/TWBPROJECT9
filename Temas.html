@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alterar Tema</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #000;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .button-escuro {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .button-rosa {
+      background-color: #ff0080;
+      color: #fff;
+    }
+
+    .button-azul {
+      background-color: #0000ff;
+      color: #fff;
+    }
+
+    /* Tema Escuro */
+    .tema-escuro {
+      background-color: #000;
+      color: #fff;
+    }
+
+    /* Tema Rosa */
+    .tema-rosa {
+      background-color: #ff0080;
+      color: #fff;
+    }
+
+    /* Tema Azul */
+    .tema-azul {
+      background-color: #0000ff;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Escolha seu tema</h1>
+    <a href="início.html"><button>Voltar</button></a>
+  </header>
+
+  <div class="container">
+    <div class="buttons">
+      <button class="button-escuro" onclick="mudarTema('escuro')">Escuro</button>
+      <button class="button-rosa" onclick="mudarTema('rosa')">Rosa</button>
+      <button class="button-azul" onclick="mudarTema('azul')">Azul</button>
+    </div>
+  </div>
+
+  <script>
+    function mudarTema(cor) {
+      document.body.classList.remove('tema-escuro', 'tema-rosa', 'tema-azul');
+      document.body.classList.add('tema-' + cor);
+      armazenarTema(cor);
+    }
+
+    function armazenarTema(cor) {
+      localStorage.setItem('tema', cor);
+    }
+
+    function recuperarTema() {
+      return localStorage.getItem('tema');
+    }
+
+    function aplicarTema() {
+      var tema = recuperarTema();
+      if (tema) {
+        document.body.classList.add('tema-' + tema);
+      }
+    }
+
+    window.onload = aplicarTema;
+  </script>
+</body>
+
+</html>

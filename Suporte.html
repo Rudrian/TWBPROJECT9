@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suporte</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9b59b6;
+            color: white;
+            margin: 0;
+            overflow-x: hidden;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #8e44ad;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .menu-icon, .settings-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .support {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .support h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .support p {
+            line-height: 1.6;
+            color: white;
+        }
+
+        .support form {
+            margin-top: 20px;
+        }
+
+        .support label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .support input[type="text"], .support input[type="email"], .support textarea {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+
+        .support button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #8e44ad;
+            color: white;
+        }
+
+        .support button:hover {
+            background-color: #732d91;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #8e44ad;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .settings {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #8e44ad;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .settings a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .settings a:hover {
+            background-color: #575757;
+        }
+
+        .closebtn-settings {
+            position: absolute;
+            top: 0;
+            left: 25px;
+            font-size: 36px;
+            margin-right: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="menu-icon" onclick="openNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <h1>Suporte</h1>
+        <div class="settings-icon" onclick="openSettings()">
+            <i class="fas fa-cog"></i>
+        </div>
+    </div>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="início.html">Home</a>
+        <a href="Suporte.html">Suporte</a>
+        <a href="Terapeutas.html">Terapeutas</a>
+        <a href="Tratamentos.html">Meus Tratamentos</a>
+        <a href="dicasterapia.html">Dicas Terapia</a>
+    </div>
+
+    <div id="mySettings" class="settings">
+        <a href="javascript:void(0)" class="closebtn-settings" onclick="closeSettings()">&times;</a>
+        <a href="Perfil.html">Perfil do Usuário</a>
+        <a href="Notificacao.html">Notificações</a>
+        <a href="Temas.html">Temas e Aparência</a>
+        <a href="Sobresite.html">Sobre o Aplicativo</a>
+    </div>
+
+    <div class="container">
+        <div class="support">
+            <h2>Precisa de Ajuda?</h2>
+            <p>
+                Estamos aqui para ajudar! Se você tem alguma dúvida, encontrou um problema ou precisa de assistência, entre em contato com nossa equipe de suporte. Estamos disponíveis para fornecer a assistência necessária e garantir que você tenha a melhor experiência possível com nossos serviços.
+            </p>
+            <p>
+                Preencha o formulário abaixo e nossa equipe entrará em contato com você o mais breve possível. Caso prefira, você também pode nos enviar um e-mail diretamente para <a href="mailto:support@exemplo.com" style="color: #ffcccb;">support@exemplo.com</a>.
+            </p>
+
+            <form id="supportForm">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Função para abrir a barra lateral
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        // Função para fechar a barra lateral
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+
+        // Função para abrir o menu de configurações
+        function openSettings() {
+            document.getElementById("mySettings").style.width = "250px";
+        }
+
+        // Função para fechar o menu de configurações
+        function closeSettings() {
+            document.getElementById("mySettings").style.width = "0";
+        }
+
+        // Função para lidar com o envio do formulário de suporte
+        document.getElementById('supportForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Lógica para enviar o formulário de suporte
+            alert('Sua mensagem foi enviada com sucesso! Nossa equipe entrará em contato em breve.');
+        });
+    </script>
+</body>
+</html>

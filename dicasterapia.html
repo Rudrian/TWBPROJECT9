@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicas de Terapias</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9b59b6;
+            margin: 0;
+            color: white;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #8e44ad;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .menu-icon, .settings-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container h2 {
+            margin-bottom: 20px;
+        }
+
+        .container p {
+            margin: 0 0 20px;
+            line-height: 1.6;
+        }
+
+        /* Sidebar Menu */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #8e44ad;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        /* Settings Menu */
+        .settings {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #8e44ad;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .settings a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .settings a:hover {
+            background-color: #575757;
+        }
+
+        .closebtn-settings {
+            position: absolute;
+            top: 0;
+            left: 25px;
+            font-size: 36px;
+            margin-right: 50px;
+        }
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="menu-icon" onclick="openNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <h1>TECH WELL-BEING</h1>
+        <div class="settings-icon" onclick="openSettings()">
+            <i class="fas fa-cog"></i>
+        </div>
+    </div>
+ <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/QVjXOyUOxlg" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+</div>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="início.html">Home</a>
+        <a href="Suporte.html">Suporte</a>
+         <a href="Terapeutas.html">Terapeutas</a>
+        <a href="Tratamentos.html">Meus Tratamentos</a>
+        <a href="dicasterapia.html">Dicas Terapia</a>
+    </div>
+
+    <div id="mySettings" class="settings">
+        <a href="javascript:void(0)" class="closebtn-settings" onclick="closeSettings()">&times;</a>
+        <a href="Perfil.html">Perfil do Usuário</a>
+        <a href="Notificacao.html">Notificações</a>
+        <a href="Temas.html">Temas e Aparência</a>
+        <a href="sobresite.html">Sobre o Aplicativo</a>
+    </div>
+
+    <div class="container">
+        <h2>Dicas de Terapias</h2>
+        <p>
+            <b>Terapia Cognitivo-Comportamental (TCC)</b>
+            <ul>
+                <li>Identifique e modifique pensamentos e comportamentos negativos.</li>
+                <li>Foco no presente e em situações específicas.</li>
+                <li>Técnicas práticas e orientadas para soluções.</li>
+            </ul>
+        </p>
+        <p>
+            <b>Psicanálise</b>
+            <ul>
+                <li>Explora as motivações, conflitos e experiências inconscientes.</li>
+                <li>Terapeuta atua como um facilitador, ajudando o cliente a ganhar autocompreensão.</li>
+                <li>Processo terapêutico pode ser longo e profundo.</li>
+            </ul>
+        </p>
+        <p>
+            <b>Terapia Psicodinâmica</b>
+            <ul>
+                <li>Baseada na psicanálise, mas foca em questões atuais e interpessoais.</li>
+                <li>Explora como relacionamentos anteriores e experiências moldam o comportamento presente.</li>
+                <li>Aborda padrões de comunicação e dinâmicas.</li>
+            </ul>
+        </p>
+        <p>
+            <b>Psicólogo Clínico</b>
+            <ul>
+                <li>Especializado em diagnosticar e tratar transtornos mentais.</li>
+                <li>Utiliza uma variedade de técnicas terapêuticas.</li>
+                <li>Pode trabalhar em clínicas, hospitais ou consultórios particulares.</li>
+            </ul>
+        </p>
+        <p>
+            <b>Psicoterapeuta</b>
+            <ul>
+                <li>Auxilia indivíduos e grupos a lidarem com desafios emocionais e psicológicos.</li>
+                <li>Podem ter formação em diferentes abordagens terapêuticas.</li>
+                <li>Trabalham com uma ampla gama de questões, incluindo ansiedade, depressão e traumas.</li>
+            </ul>
+        </p>
+        <p>
+            <b>Terapeuta Familiar</b>
+            <ul>
+                <li>Especializado em trabalhar com famílias e casais.</li>
+                <li>Ajuda a melhorar a comunicação, resolver conflitos e fortalecer relacionamentos.</li>
+                <li>Pode trabalhar com uma variedade de questões, como problemas de comunicação, conflitos conjugais e problemas com filhos.</li>
+            </ul>
+        </p>
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+
+        function openSettings() {
+            document.getElementById("mySettings").style.width = "250px";
+        }
+
+        function closeSettings() {
+            document.getElementById("mySettings").style.width = "0";
+        }
+    </script>
+</body>
+</html>

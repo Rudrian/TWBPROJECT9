@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terapeutas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9b59b6;
+            margin: 0;
+            color: white;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #8e44ad;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .menu-icon, .settings-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container h2 {
+            margin-bottom: 20px;
+        }
+
+        .container p {
+            margin: 0 0 20px;
+            line-height: 1.6;
+        }
+
+        .container img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Sidebar Menu */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #8e44ad;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        /* Settings Menu */
+        .settings {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #8e44ad;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .settings a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .settings a:hover {
+            background-color: #575757;
+        }
+
+        .closebtn-settings {
+            position: absolute;
+            top: 0;
+            left: 25px;
+            font-size: 36px;
+            margin-right: 50px;
+        }
+        
+        /* Tema Escuro */
+        .tema-escuro {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Tema Rosa */
+        .tema-rosa {
+            background-color: #ff0080;
+            color: #fff;
+        }
+
+        /* Tema Azul */
+        .tema-azul {
+            background-color: #0000ff;
+            color: #fff;
+        }
+        
+        .therapist-container {
+            background-color: #8E3D9E;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto; /* Ajustado para centralizar */
+            text-align: center;
+        }
+
+        .therapist-container h3 {
+            margin-bottom: 10px;
+        }
+
+        .therapist-container p {
+            margin: 5px 0;
+        }
+
+        .therapist-container button {
+            padding: 10px;
+            background-color: #5E2666;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .therapist-container button:hover {
+            background-color: #4a1a4b;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #8E3D9E;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-content input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .modal-content button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5E2666;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .modal-content button:hover {
+            background-color: #4a1a4b;
+        }
+
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .chat-history {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            border: 1px solid #5E2666;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #6B2A7F;
+        }
+
+        .chat-message {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .chat-message p {
+            margin: 5px 0;
+        }
+
+        .Titulo9 {
+            text-align: center;
+            margin: 20px 0; 
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="menu-icon" onclick="openNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <h1>TECH WELL-BEING</h1>
+        <div class="settings-icon" onclick="openSettings()">
+            <i class="fas fa-cog"></i>
+        </div>
+    </div>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="início.html">Home</a>
+        <a href="Suporte.html">Suporte</a>
+        <a href="Terapeutas.html">Terapeutas</a>
+        <a href="Tratamentos.html">Meus Tratamentos</a>
+        <a href="dicasterapia.html">Dicas Terapia</a>
+    </div>
+
+    <div id="mySettings" class="settings">
+        <a href="javascript:void(0)" class="closebtn-settings" onclick="closeSettings()">&times;</a>
+        <a href="Perfil.html">Perfil do Usuário</a>
+        <a href="Notificacao.html">Notificações</a>
+        <a href="Temas.html">Temas e Aparência</a>
+        <a href="Sobresite.html">Sobre o Aplicativo</a>
+    </div>
+
+    <div class="container">
+        <h2>Converse com os terapeutas</h2>
+    </div>
+
+    <div class="header">
+        <h1>Terapeutas TWB</h1>
+    </div>
+
+    <div class="therapist-container">
+        <h3>Dr. João Silva</h3>
+        <p>Psicólogo Clínico</p>
+        <button onclick="abrirChat('Dr. João Silva')">Abrir Chat</button>
+    </div>
+
+    <div class="therapist-container">
+        <h3>Dr. Maria Oliveira</h3>
+        <p>Psicoterapeuta</p>
+        <button onclick="abrirChat('Dr. Maria Oliveira')">Abrir Chat</button>
+    <div class="therapist-container">
+      
+        <h3>Dr. Maria Oliveira</h3>
+        <p>Psicoterapeuta</p>
+        <button onclick="abrirChat('Dr. Maria Oliveira')">Abrir Chat</button>
+    </div>
+
+    <div class="therapist-container">
+        <h3>Dr. Pedro Santos</h3>
+        <p>Terapeuta Cognitivo-Comportamental</p>
+        <button onclick="abrirChat('Dr. Pedro Santos')">Abrir Chat</button>
+    </div>
+
+    <div class="therapist-container">
+        <h3>Dr. Ana Souza</h3>
+        <p>Terapeuta Familiar</p>
+        <button onclick="abrirChat('Dr. Ana Souza')">Abrir Chat</button>
+    </div>
+
+    <div class="therapist-container">
+        <h3>Dr. Lucas Pereira</h3>
+        <p>Psicanalista</p>
+        <button onclick="abrirChat('Dr. Lucas Pereira')">Abrir Chat</button>
+    </div>
+
+    <div id="chatModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="fecharChat()">&times;</span>
+        <h2 id="therapistName"></h2>
+        <div id="chatHistory" class="chat-history"></div>
+        <div class="modal-input-container">
+            <input type="text" id="chatInput" placeholder="Digite sua mensagem...">
+            <button type="button" onclick="enviarMensagem()">Enviar</button>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+    }
+
+    function openSettings() {
+        document.getElementById("mySettings").style.width = "250px";
+    }
+
+    function closeSettings() {
+        document.getElementById("mySettings").style.width = "0";
+    }
+
+    function armazenarTema(cor) {
+        localStorage.setItem('tema', cor);
+    }
+
+    function recuperarTema() {
+        return localStorage.getItem('tema');
+    }
+
+    function aplicarTema() {
+        var tema = recuperarTema();
+        if (tema) {
+            document.body.classList.add('tema-' + tema);
+        }
+    }
+
+    function abrirChat(terapeuta) {
+        document.getElementById('therapistName').innerText = 'Chat com ' + terapeuta;
+        var chatHistory = document.getElementById('chatHistory');
+        chatHistory.innerHTML = ''; // Limpar histórico ao abrir o chat
+
+        // Carregar histórico salvo
+        var storedHistory = localStorage.getItem('chatHistory_' + terapeuta);
+        if (storedHistory) {
+            chatHistory.innerHTML = storedHistory;
+        }
+
+        // Adicionar ou atualizar tratamento em andamento
+        let treatments = JSON.parse(localStorage.getItem('treatments')) || [];
+        if (!treatments.some(t => t.therapist === terapeuta)) {
+            treatments.push({ therapist: terapeuta });
+            localStorage.setItem('treatments', JSON.stringify(treatments));
+        }
+
+        document.getElementById('chatModal').style.display = 'flex';
+    }
+
+    function fecharChat() {
+        document.getElementById('chatModal').style.display = 'none';
+    }
+
+    function enviarMensagem() {
+        var mensagem = document.getElementById('chatInput').value;
+        if (mensagem.trim() === '') {
+            alert('Por favor, digite uma mensagem.');
+            return;
+        }
+
+        var chatHistory = document.getElementById('chatHistory');
+        var novaMensagem = document.createElement('div');
+        novaMensagem.classList.add('chat-message');
+        novaMensagem.innerHTML = '<p><strong>Você:</strong> ' + mensagem + '</p>';
+        chatHistory.appendChild(novaMensagem);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+
+        // Salvar histórico
+        var terapeuta = document.getElementById('therapistName').innerText.replace('Chat com ', '');
+        localStorage.setItem('chatHistory_' + terapeuta, chatHistory.innerHTML);
+
+        document.getElementById('chatInput').value = '';
+    }
+
+    function stopTreatment(therapist) {
+        let treatments = JSON.parse(localStorage.getItem('treatments')) || [];
+        treatments = treatments.filter(treatment => treatment.therapist !== therapist);
+        localStorage.setItem('treatments', JSON.stringify(treatments));
+
+        // Optionally, you can refresh the page or update the UI here
+        alert('Tratamento com ' + therapist + ' foi parado.');
+    }
+
+    // Fechar modal quando clicar fora dele
+    window.onclick = function(event) {
+        var modal = document.getElementById('chatModal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    aplicarTema();
+</script>
+
+</body>
+</html>

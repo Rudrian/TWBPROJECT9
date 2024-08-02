@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre o Aplicativo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9b59b6;
+            color: white;
+            margin: 0;
+            overflow-x: hidden;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #8e44ad;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .menu-icon, .settings-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container h2 {
+            margin-top: 0;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 20px;
+            background-color: #fff;
+            color: #000;
+            border-radius: 10px;
+        }
+
+        .content h3 {
+            color: #8e44ad;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+        }
+
+        /* Sidebar Menu */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #8e44ad;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        /* Settings Menu */
+        .settings {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #8e44ad;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .settings a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .settings a:hover {
+            background-color: #575757;
+        }
+
+        .closebtn-settings {
+            position: absolute;
+            top: 0;
+            left: 25px;
+            font-size: 36px;
+            margin-right: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #8e44ad;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #732d91;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="menu-icon" onclick="openNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <h1>Sobre o Aplicativo</h1>
+        <div class="settings-icon" onclick="openSettings()">
+            <i class="fas fa-cog"></i>
+        </div>
+    </div>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="início.html">Home</a>
+        <a href="Suporte.html">Suporte</a>
+        <a href="Terapeutas.html">Terapeutas</a>
+        <a href="Tratamentos.html">Meus Tratamentos</a>
+    </div>
+
+    <div id="mySettings" class="settings">
+        <a href="javascript:void(0)" class="closebtn-settings" onclick="closeSettings()">&times;</a>
+        <a href="Perfil.html">Perfil do Usuário</a>
+        <a href="Notificacao.html">Notificações</a>
+        <a href="Temas.html">Temas e Aparência</a>
+        <a href="Sobresite.html">Sobre o Aplicativo</a>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <h2>Bem-vindo ao Nosso Aplicativo</h2>
+            <p>Nosso aplicativo foi desenvolvido com o objetivo de proporcionar uma experiência única e personalizada para nossos usuários. Oferecemos uma ampla gama de funcionalidades que visam facilitar a sua vida e tornar suas tarefas diárias mais eficientes.</p>
+
+            <h3>Principais Recursos:</h3>
+            <ul>
+                <li><strong>Interface Intuitiva:</strong> Navegação fácil e rápida para que você encontre o que precisa sem complicações.</li>
+                <li><strong>Personalização:</strong> Ajuste o aplicativo conforme suas preferências com opções de temas e configurações.</li>
+                <li><strong>Segurança Avançada:</strong> Protegemos seus dados com as mais recentes tecnologias de segurança.</li>
+                <li><strong>Suporte ao Cliente:</strong> Atendimento dedicado para ajudar você em qualquer dúvida ou problema.</li>
+            </ul>
+
+            <h3>Sobre Nós:</h3>
+            <p>Somos uma equipe dedicada a criar soluções digitais inovadoras e de alta qualidade. Com anos de experiência no setor, nossa missão é oferecer produtos que realmente atendam às necessidades de nossos usuários e superem suas expectativas.</p>
+
+            <h3>Contato:</h3>
+            <p>Se você tiver alguma dúvida ou feedback, não hesite em nos contatar através dos canais de suporte disponíveis em nosso aplicativo.</p>
+        </div>
+    </div>
+
+    <script>
+        // Função para abrir a barra lateral
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        // Função para fechar a barra lateral
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+
+        // Função para abrir o menu de configurações
+        function openSettings() {
+            document.getElementById("mySettings").style.width = "250px";
+        }
+
+        // Função para fechar o menu de configurações
+        function closeSettings() {
+            document.getElementById("mySettings").style.width = "0";
+        }
+    </script>
+</body>
+</html>

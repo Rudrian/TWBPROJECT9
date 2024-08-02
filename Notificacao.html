@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificações</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9b59b6;
+            margin: 0;
+            color: white;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #8e44ad;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .menu-icon, .settings-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container h2 {
+            margin-bottom: 20px;
+        }
+
+        .notification-container {
+            background-color: #8E3D9E;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .notification-container h3 {
+            margin-bottom: 10px;
+        }
+
+        .notification-container p {
+            margin: 5px 0;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #8e44ad;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .settings {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #8e44ad;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .settings a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .settings a:hover {
+            background-color: #575757;
+        }
+
+        .closebtn-settings {
+            position: absolute;
+            top: 0;
+            left: 25px;
+            font-size: 36px;
+            margin-right: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="menu-icon" onclick="openNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <h1>TECH WELL-BEING</h1>
+        <div class="settings-icon" onclick="openSettings()">
+            <i class="fas fa-cog"></i>
+        </div>
+    </div>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="início.html">Home</a>
+        <a href="Suporte.html">Suporte</a>
+        <a href="Terapeutas.html">Terapeutas</a>
+        <a href="Tratamentos.html">Meus Tratamentos</a>
+    </div>
+
+    <div id="mySettings" class="settings">
+        <a href="javascript:void(0)" class="closebtn-settings" onclick="closeSettings()">&times;</a>
+        <a href="Perfil.html">Perfil do Usuário</a>
+        <a href="Notificacao.html">Notificações</a>
+        <a href="Temas.html">Temas e Aparência</a>
+        <a href="Sobresite.html">Sobre o Aplicativo</a>
+    </div>
+
+    <div class="container">
+        <h2>Notificações</h2>
+        <div id="notifications">
+            <!-- Notificações serão carregadas aqui -->
+        </div>
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+
+        function openSettings() {
+            document.getElementById("mySettings").style.width = "250px";
+        }
+
+        function closeSettings() {
+            document.getElementById("mySettings").style.width = "0";
+        }
+
+        function getAdvice() {
+            // Lista de conselhos para exibir
+            const adviceList = [
+                "Comece a semana com uma atitude positiva e foco nas suas metas.",
+                "Faça uma pausa e pratique a respiração profunda para reduzir o estresse.",
+                "Beba bastante água e mantenha-se hidratado durante o dia.",
+                "Reserve um tempo para refletir sobre suas conquistas e o que deseja alcançar.",
+                "Aproveite o final de semana para relaxar e recarregar suas energias."
+            ];
+            return adviceList;
+        }
+
+        function loadNotifications() {
+            const notificationsContainer = document.getElementById('notifications');
+            const today = new Date();
+            const dayOfWeek = today.getDay(); // 0 = Domingo, 1 = Segunda, ..., 6 = Sábado
+            const adviceList = getAdvice();
+            const treatments = JSON.parse(localStorage.getItem('treatments')) || [];
+
+            if (dayOfWeek === 3 && treatments.length > 0) {
+                // Quarta-feira e há tratamentos em andamento
+                notificationsContainer.innerHTML = `
+                    <div class="notification-container">
+                        <h3>Tratamento em Andamento</h3>
+                        <p>Você tem um tratamento em andamento. Confira os detalhes na página de tratamentos.</p>
+                    </div>
+                `;
+            } else if (dayOfWeek === 1 || dayOfWeek === 5) {
+                // Segunda ou sexta-feira
+                const adviceIndex = (dayOfWeek === 1) ? 0 : 4; // Segunda: índice 0, Sexta: índice 4
+                notificationsContainer.innerHTML = `
+                    <div class="notification-container">
+                        <h3>Conselho do Dia</h3>
+                        <p>${adviceList[adviceIndex]}</p>
+                    </div>
+                `;
+            } else {
+                notificationsContainer.innerHTML = '<p>Você não tem notificações no momento.</p>';
+            }
+        }
+
+        window.onload = loadNotifications;
+    </script>
+</body>
+</html>

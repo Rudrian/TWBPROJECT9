@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre a TWB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9b59b6;
+            margin: 0;
+            color: white;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #8e44ad;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .menu-icon, .settings-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container h2 {
+            margin-bottom: 20px;
+        }
+
+        .container p {
+            margin: 0 0 20px;
+            line-height: 1.6;
+        }
+
+        .container img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Sidebar Menu */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #8e44ad;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        /* Settings Menu */
+        .settings {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #8e44ad;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .settings a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .settings a:hover {
+            background-color: #575757;
+        }
+
+        .closebtn-settings {
+            position: absolute;
+            top: 0;
+            left: 25px;
+            font-size: 36px;
+            margin-right: 50px;
+        }
+        
+        /* Tema Escuro */
+        .tema-escuro {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Tema Rosa */
+        .tema-rosa {
+            background-color: #ff0080;
+            color: #fff;
+        }
+
+        /* Tema Azul */
+        .tema-azul {
+            background-color: #0000ff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+  <audio></audio>
+    <div class="header">
+        <div class="menu-icon" onclick="openNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <h1>TECH WELL-BEING</h1>
+        <div class="settings-icon" onclick="openSettings()">
+            <i class="fas fa-cog"></i>
+        </div>
+    </div>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="início.html">Home</a>
+        <a href="Suporte.html">Suporte</a>
+        <a href="Terapeutas.html">Terapeutas</a>
+        <a href="Tratamentos.html">Meus Tratamentos</a>
+        <a href="dicasterapia.html">Dicas Terapia</a>
+    </div>
+
+    <div id="mySettings" class="settings">
+        <a href="javascript:void(0)" class="closebtn-settings" onclick="closeSettings()">&times;</a>
+        <a href="Perfil.html">Perfil do Usuário</a>
+        <a href="Notificacao.html">Notificações</a>
+        <a href="Temas.html">Temas e Aparência</a>
+        <a href="Sobresite.html">Sobre o Aplicativo</a>
+    </div>
+
+    <div class="container">
+        <h2>SOBRE A TWB</h2>
+        <p>
+            Descrição Geral: SerenityAR é um aplicativo móvel inovador que utiliza tecnologia de realidade aumentada (AR) para proporcionar uma experiência de terapia de saúde mental interativa e personalizada. O aplicativo combina ambientes virtuais terapêuticos com monitoramento de saúde em tempo real, visando ajudar os usuários a lidar com ansiedade, estresse, fobias e outras condições psicológicas.
+        </p>
+        <img src="https://i.im.ge/2024/08/01/VGcAmL.1000353061.jpeg" alt="Imagem de Terapia AR">
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+
+        function openSettings() {
+            document.getElementById("mySettings").style.width = "250px";
+        }
+
+        function closeSettings() {
+            document.getElementById("mySettings").style.width = "0";
+        }
+
+        function armazenarTema(cor) {
+            localStorage.setItem('tema', cor);
+        }
+
+        function recuperarTema() {
+            return localStorage.getItem('tema');
+        }
+
+        function aplicarTema() {
+            var tema = recuperarTema();
+            if (tema) {
+                document.body.classList.add('tema-' + tema);
+            }
+        }
+
+        aplicarTema();
+    </script>
+</body>
+</html>

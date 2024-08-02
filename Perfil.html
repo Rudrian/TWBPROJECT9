@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9b59b6;
+            color: white;
+            margin: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #8e44ad;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .menu-icon, .settings-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .profile-picture {
+            margin-bottom: 20px;
+        }
+
+        .profile-picture img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .profile-picture input {
+            display: none;
+        }
+
+        .profile-picture label {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #8e44ad;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="password"], select {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #8e44ad;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #732d91;
+        }
+
+        .preferences, .security, .logout {
+            margin-top: 20px;
+        }
+
+        .preferences select, .preferences input[type="checkbox"] {
+            margin-bottom: 10px;
+        }
+
+        /* Sidebar Menu */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #8e44ad;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        /* Settings Menu */
+        .settings {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #8e44ad;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .settings a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .settings a:hover {
+            background-color: #575757;
+        }
+
+        .closebtn-settings {
+            position: absolute;
+            top: 0;
+            left: 25px;
+            font-size: 36px;
+            margin-right: 50px;
+        }
+
+        /* Tema Escuro */
+        .tema-escuro {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Tema Rosa */
+        .tema-rosa {
+            background-color: #ff0080;
+            color: #fff;
+        }
+
+        /* Tema Azul */
+        .tema-azul {
+            background-color: #0000ff;
+            color: #fff;
+        }
+
+        .tema-opcoes select {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="menu-icon" onclick="openNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <h1>Perfil do Usuário</h1>
+        <div class="settings-icon" onclick="openSettings()">
+            <i class="fas fa-cog"></i>
+        </div>
+    </div>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="início.html">Home</a>
+        <a href="Suporte.html">Suporte</a>
+        <a href="Terapeutas.html">Terapeutas</a>
+        <a href="Tratamentos.html">Meus Tratamentos</a>
+        <a href="dicasterapia.html">Dicas Terapia</a>
+    </div>
+
+    <div id="mySettings" class="settings">
+        <a href="javascript:void(0)" class="closebtn-settings" onclick="closeSettings()">&times;</a>
+        <a href="Perfil.html">Perfil do Usuário</a>
+        <a href="Notificacao.html">Notificações</a>
+        <a href="Temas.html">Temas e Aparência</a>
+        <a href="Sobresite.html">Sobre o Aplicativo</a>
+    </div>
+
+    <div class="container">
+        <div class="profile-picture">
+            <img src="https://via.placeholder.com/150" alt="Foto do Perfil" id="profilePic">
+            <input type="file" accept="image/*" id="uploadProfilePic">
+            <label for="uploadProfilePic">Alterar Foto</label>
+        </div>
+
+        <form id="personalInfoForm">
+            <h2>Informações Pessoais</h2>
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" value="João Silva">
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="joao@example.com">
+            
+            <label for="phone">Telefone:</label>
+            <input type="tel" id="phone" name="phone" value="1234567890">
+            
+            <label for="dob">Data de Nascimento:</label>
+            <input type="date" id="dob" name="dob" value="1990-01-01">
+            
+            <button type="submit">Salvar Alterações</button>
+        </form>
+
+        <div class="preferences">
+            <h2>Preferências</h2>
+            <form id="preferencesForm">
+                <label for="language">Idioma:</label>
+                <select id="language" name="language">
+                    <option value="pt-BR" selected>Português (Brasil)</option>
+                    <option value="en-US">Inglês (Estados Unidos)</option>
+                </select>
+
+                <label for="theme">Tema:</label>
+                <select id="theme" name="theme" onchange="alterarTema(this.value)">
+                    <option value="light">Claro</option>
+                    <option value="dark">Escuro</option>
+                    <option value="rosa">Rosa</option>
+                    <option value="azul">Azul</option>
+                </select>
+
+                <button type="submit">Salvar Preferências</button>
+            </form>
+        </div>
+
+        <div class="security">
+            <h2>Segurança</h2>
+            <form id="securityForm">
+                <label for="twoFactor">Autenticação de Dois Fatores:</label>
+                <input type="checkbox" id="twoFactor" name="twoFactor" checked>
+                
+                <button type="submit">Atualizar Segurança</button>
+            </form>
+        </div>
+
+        <div class="logout">
+          <a href="index.html"<button type="button" onclick="logout()">Sair</button></a>
+          
+        </div>
+      <script>
+    // Função para abrir a barra lateral
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+    }
+
+    // Função para fechar a barra lateral
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+    }
+
+    // Função para abrir o menu de configurações
+    function openSettings() {
+        document.getElementById("mySettings").style.width = "250px";
+    }
+
+    // Função para fechar o menu de configurações
+    function closeSettings() {
+        document.getElementById("mySettings").style.width = "0";
+    }
+
+    // Função para alterar o tema
+    function alterarTema(tema) {
+        const body = document.body;
+        body.classList.remove("tema-escuro", "tema-rosa", "tema-azul");
+        switch (tema) {
+            case "dark":
+                body.classList.add("tema-escuro");
+                break;
+            case "rosa":
+                body.classList.add("tema-rosa");
+                break;
+            case "azul":
+                body.classList.add("tema-azul");
+                break;
+            default:
+                // Tema claro (padrão)
+                body.classList.remove("tema-escuro", "tema-rosa", "tema-azul");
+                break;
+        }
+    }
+
+    // Função para fazer logout
+    function logout() {
+        // Adicione a lógica de logout aqui
+        alert("Você saiu com sucesso!");
+    }
+
+    // Função para atualizar foto de perfil
+    document.getElementById('uploadProfilePic').addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('profilePic').src = e.target.result;
+                localStorage.setItem('profilePic', e.target.result); // Salva a foto no localStorage
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Função para carregar dados do localStorage ao carregar a página
+    function loadData() {
+        const savedPic = localStorage.getItem('profilePic');
+        if (savedPic) {
+            document.getElementById('profilePic').src = savedPic;
+        }
+        
+        const savedName = localStorage.getItem('name');
+        if (savedName) {
+            document.getElementById('name').value = savedName;
+        }
+
+        const savedEmail = localStorage.getItem('email');
+        if (savedEmail) {
+            document.getElementById('email').value = savedEmail;
+        }
+
+        const savedPhone = localStorage.getItem('phone');
+        if (savedPhone) {
+            document.getElementById('phone').value = savedPhone;
+        }
+
+        const savedDob = localStorage.getItem('dob');
+        if (savedDob) {
+            document.getElementById('dob').value = savedDob;
+        }
+
+        const savedLanguage = localStorage.getItem('language');
+        if (savedLanguage) {
+            document.getElementById('language').value = savedLanguage;
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.getElementById('theme').value = savedTheme;
+            alterarTema(savedTheme);
+        }
+
+        const savedTwoFactor = localStorage.getItem('twoFactor') === 'true';
+        document.getElementById('twoFactor').checked = savedTwoFactor;
+    }
+
+    // Função para salvar informações pessoais
+    document.getElementById('personalInfoForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Salvar informações pessoais no localStorage
+        localStorage.setItem('name', document.getElementById('name').value);
+        localStorage.setItem('email', document.getElementById('email').value);
+        localStorage.setItem('phone', document.getElementById('phone').value);
+        localStorage.setItem('dob', document.getElementById('dob').value);
+        alert('Informações pessoais salvas com sucesso!');
+    });
+
+    // Função para salvar preferências
+    document.getElementById('preferencesForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Salvar preferências no localStorage
+        const temaSelecionado = document.getElementById('theme').value;
+        alterarTema(temaSelecionado);
+        localStorage.setItem('theme', temaSelecionado);
+        localStorage.setItem('language', document.getElementById('language').value);
+        alert('Preferências salvas com sucesso!');
+    });
+
+    // Função para atualizar segurança
+    document.getElementById('securityForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Salvar configurações de segurança no localStorage
+        localStorage.setItem('twoFactor', document.getElementById('twoFactor').checked);
+        alert('Configurações de segurança atualizadas com sucesso!');
+    });
+
+    // Carregar dados ao iniciar a página
+    window.onload = loadData;
+</script>

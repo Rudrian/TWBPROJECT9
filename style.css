@@ -1,0 +1,55 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #000;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button-escuro {
+  background-color: #000;
+  color: #fff;
+}
+
+.button-rosa {
+  background-color: #ff0080;
+  color: #fff;
+}
+
+.button-azul {
+  background-color: #0000ff;
+  color: #fff;
+}
+
+.tema-escuro {
+  background-color: #000;
+  color: #fff;
+}
+
+.tema-rosa {
+  background-color: #ff0080;
+  color: #fff;
+}
+
+.tema-azul {
+  background-color: #0000ff;
+  color: #fff;
+}
